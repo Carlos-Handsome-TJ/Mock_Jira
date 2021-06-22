@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import {AuthProviders} from "./context";
 import { loadDevTools } from "jira-dev-tool";
 
 loadDevTools(() => {
     ReactDOM.render(
         <React.StrictMode>
-            <App />
+            <AuthProviders>
+                <App />
+            </AuthProviders>
         </React.StrictMode>,
         document.getElementById('root')
     );

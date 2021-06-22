@@ -1,7 +1,11 @@
 const localStorageKey = "__auth_provider_key__"
 const apiUrl = process.env.REACT_APP_API_URL
 
-interface User {
+/**
+ *  定义登录、注册、登出函数、存储token等函数
+ */
+
+export interface User {
     id: number,
     name: string,
     token: string,
