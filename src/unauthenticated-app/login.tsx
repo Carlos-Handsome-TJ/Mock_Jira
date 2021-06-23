@@ -9,7 +9,7 @@ export const LoginModule = () => {
         const password = (event.currentTarget.elements[1] as HTMLFormElement).value
         login({username, password})
     }
-    return<>
+    return <>
         <form onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="username">用户名</label>
