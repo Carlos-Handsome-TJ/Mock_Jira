@@ -2,8 +2,8 @@ import {SearchPanel} from "./search-panel";
 import {TableList} from "./table-list";
 
 export const ShowList = () => {
-    return<>
+    return <>
         <SearchPanel/>
-        <TableList />
+        <TableList/>
     </>
 }

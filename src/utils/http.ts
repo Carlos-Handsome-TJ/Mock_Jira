@@ -1,6 +1,7 @@
 import qs from "qs"
 import * as auth from "./auth-provider"
 import {useAuth} from "../context/auth-context";
+import {useCallback} from "react";
 
 const apiUrl = process.env.REACT_APP_API_URL
 
@@ -18,7 +19,7 @@ interface Config extends RequestInit {
  * @param headers
  * @param customConfig
  */
-export const http = (endpoint: string, {data, token, headers, ...customConfig}: Config) => {
+export const http = (endpoint: string, {data, token, headers, ...customConfig}: Config = {}) => {
     const config = {
         method: "GET",
         headers: {
@@ -52,7 +53,9 @@ export const http = (endpoint: string, {data, token, headers, ...customConfig}: 
 /***
  * 使用自定义狗子函数，必须得自带钩子函数，
  */
-export const useHttp = () => {
+export const useHttp = (endpoint: string) => {
     const {user} = useAuth()
-
+    return (...[endpoint, config]: Parameters<typeof http>) => {
+        http(endpoint, {...config, token: user?.token || ""})
+    }
 }

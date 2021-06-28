@@ -1,5 +1,3 @@
-import {log} from "util";
-
 const localStorageKey = "__auth_provider_key__"
 const apiUrl = process.env.REACT_APP_API_URL
 
@@ -15,6 +13,7 @@ export interface User {
     ownedId: number
 }
 
+export const getToken = window.localStorage.getItem(localStorageKey)
 const handleToken = ({user}: { user: User }) => {
     console.log(user.token)
     window.localStorage.setItem(localStorageKey, user.token || "")
