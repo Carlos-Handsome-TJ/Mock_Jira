@@ -10,7 +10,9 @@ export interface User {
     name: string,
     token: string,
     organization: string,
-    ownedId: number
+    ownedId: number,
+    personId: number,
+    created: number
 }
 
 export const getToken = window.localStorage.getItem(localStorageKey)

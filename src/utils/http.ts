@@ -51,11 +51,11 @@ export const http = (endpoint: string, {data, token, headers, ...customConfig}: 
     })
 }
 /***
- * 使用自定义狗子函数，必须得自带钩子函数，
+ * 使用自定义钩子函数，必须得自带钩子函数，
  */
-export const useHttp = (endpoint: string) => {
+export const useHttp = () => {
     const {user} = useAuth()
-    return (...[endpoint, config]: Parameters<typeof http>) => {
-        http(endpoint, {...config, token: user?.token || ""})
-    }
+    return useCallback((...[endpoint, config]: Parameters<typeof http>) => {
+        return http(endpoint, {...config, token: user?.token || ""})
+    }, [])
 }

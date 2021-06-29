@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import {AuthProviders} from "./context";
 import { loadDevTools } from "jira-dev-tool";
+import "antd/dist/antd.less"
 
 loadDevTools(() => {
     ReactDOM.render(
