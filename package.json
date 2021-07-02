@@ -17,10 +17,12 @@
     "@types/react-dom": "^17.0.8",
     "antd": "^4.16.6",
     "craco-antd": "^1.19.0",
+    "i18next": "^20.3.2",
     "jira-dev-tool": "^1.7.61",
     "qs": "^6.10.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-i18next": "^11.11.0",
     "react-scripts": "4.0.3",
     "typescript": "^4.3.4",
     "web-vitals": "^1.1.2"

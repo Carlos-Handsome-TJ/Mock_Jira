@@ -4,6 +4,7 @@ import App from './App';
 import "./App.css"
 import {AuthProviders} from "./context";
 import { loadDevTools } from "jira-dev-tool";
+import "./i18config"
 import "antd/dist/antd.less"
 
 loadDevTools(() => {

@@ -2,12 +2,13 @@ import {useHttp} from "../utils/http";
 import {useEffect, useState} from "react";
 import {User} from "../utils/auth-provider";
 import {Form, Input, Select, Table} from "antd";
+import {useTranslation} from "react-i18next";
+import styled from "@emotion/styled";
 
 interface listProps {
     users: User[]
     lists: User[]
 }
-
 
 export const ShowList = () => {
     const client = useHttp()
@@ -22,12 +23,18 @@ export const ShowList = () => {
         <TableList users={users} lists={lists}/>
     </>
 }
+/**
+ * 定义搜索框
+ * @param props
+ * @constructor
+ */
 const SearchPanel = (props: listProps) => {
     const {users} = props
+    const {t} = useTranslation()
     return <Form>
         <Input type="text"/>
         <Select defaultValue={"chargePerson"}>
-            <Select.Option value="chargePerson">负责人</Select.Option>
+            <Select.Option value="chargePerson">{t("principal")}</Select.Option>
             {users.map(user => {
                 return <Select.Option key={user.id} value={user.id}>{user.name}</Select.Option>
             })}
@@ -35,6 +42,11 @@ const SearchPanel = (props: listProps) => {
     </Form>
 }
 
+/**
+ * 定义数据展示表格
+ * @param props
+ * @constructor
+ */
 const TableList = (props: listProps) => {
     const {users, lists} = props
     //定义表头
@@ -58,10 +70,5 @@ const TableList = (props: listProps) => {
             projectName: project.name
         }
     })
-    /*
-    {organization: "外卖组", ownerId: 2087569429, name: "高修文", id: 1}
-    {personId: 4, organization: "外卖组", created: 1604989757139, ownerId: 2087569429, name: "骑手管理", …}
-    */
-
     return <Table columns={columns} dataSource={tableData}/>
 }
