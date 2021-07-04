@@ -1,19 +1,18 @@
 import React, {useState} from "react";
 import {useAuth} from "../context/auth-context";
+import {useTranslation} from 'react-i18next';
 import {Form, Input, Button, Divider, Select} from "antd";
 import styled from "@emotion/styled";
 import logo from "../assets/logo.svg";
 import left from "../assets/left.svg";
 import right from "../assets/right.svg";
-import {useTranslation} from 'react-i18next';
-import {log} from "util";
 
 export const UnauthenticatedApp = () => {
 
     const {t, i18n} = useTranslation()
     const [isRegister, setIsRegister] = useState(false)
     const changeLang = (value: string | undefined) => {
-        i18n.changeLanguage(value)
+        i18n.changeLanguage(value === "zh" ? "zh" : "en")
     }
     return (
         <StyleContainer>
@@ -25,12 +24,12 @@ export const UnauthenticatedApp = () => {
                     <Select.Option
                         value={"zh"}
                     >
-                        {t("lang-en")}
+                        {t("change_lang.simplified_chinese")}
                     </Select.Option>
                     <Select.Option
                         value={"en"}
 
-                    >{t("lang-ch")}</Select.Option>
+                    >{t("change_lang.english_us")}</Select.Option>
                 </Select>
                 <StyleH2>{t("login-please")}</StyleH2>
                 {isRegister ? <RegisterModule/> : <LoginModule/>}
@@ -55,13 +54,13 @@ const LoginModule = () => {
     return <>
         <Form onFinish={handleSubmit}>
             <Form.Item name={"username"}>
-                <Input placeholder={t("username")}/>
+                <Input placeholder={t("login.username")}/>
             </Form.Item>
             <Form.Item name={"password"}>
-                <Input.Password placeholder={t("password")}/>
+                <Input.Password placeholder={t("login.password")}/>
             </Form.Item>
             <Form.Item>
-                <StyleButton htmlType="submit">登录</StyleButton>
+                <StyleButton htmlType="submit">{t("login.login")}</StyleButton>
             </Form.Item>
         </Form>
     </>
@@ -79,16 +78,16 @@ const RegisterModule = () => {
     return <>
         <Form onFinish={handleSubmit}>
             <Form.Item name={"username"}>
-                <Input placeholder={t("username")}/>
+                <Input placeholder={t("register.username")}/>
             </Form.Item>
             <Form.Item name={"password"}>
-                <Input.Password placeholder={t("password")}/>
+                <Input.Password placeholder={t("register.password")}/>
             </Form.Item>
             <Form.Item name={"confirm-password"}>
-                <Input.Password placeholder={"确认密码"}/>
+                <Input.Password placeholder={t("register.confirm_password")}/>
             </Form.Item>
             <Form.Item>
-                <StyleButton htmlType="submit">注册</StyleButton>
+                <StyleButton htmlType="submit">{t("register.register")}</StyleButton>
             </Form.Item>
         </Form>
     </>

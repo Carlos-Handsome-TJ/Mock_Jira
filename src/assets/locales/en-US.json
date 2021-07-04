@@ -1,0 +1,19 @@
+{
+  "translation": {
+    "login": {
+      "username": "username",
+      "password": "password",
+      "login": "login"
+    },
+    "register": {
+      "username": "username",
+      "password": "password",
+      "register": "register",
+      "confirm_password": "please confirm password"
+    },
+    "change_lang": {
+      "simplified_chinese": "简体中文",
+      "english_us": "English-US"
+    }
+  }
+}
